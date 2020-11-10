@@ -1,0 +1,6 @@
+<nav class="container">
+  <navigation-items [items]="navItems"></navigation-items>
+  <navigation-search (searched)="onSearch($event)"></navigation-search>
+</nav>
+
+<p *ngIf="searchTerm">Você pesquisou: {{ searchTerm }}</p>
