@@ -3,4 +3,10 @@
   <navigation-search (searched)="onSearch($event)"></navigation-search>
 </nav>
 
-<p *ngIf="searchTerm">Você pesquisou: {{ searchTerm }}</p>
+<!-- <p *ngIf="searchResults">Você pesquisou: {{ searchResults }}</p> -->
+
+<ul *ngIf="searchResults.length > 0">
+  <li *ngFor="let result of searchResults">
+    <a [href]="result.url">{{result.title}}</a>
+  </li>
+</ul>

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { SearchServiceService } from 'src/app/search-service.service';
 
 @Component({
   selector: 'navigation-search',
@@ -7,14 +8,17 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
   @Output()
-  searched: EventEmitter<string> = new EventEmitter()
+  searched: EventEmitter<{title: string, url: string}[]> = new EventEmitter()
 
-  constructor() { }
+  constructor(private searchServ: SearchServiceService) { }
 
   ngOnInit(): void {
   }
 
   search(searchInput: string) {
-    this.searched.emit(searchInput)
+
+    let results = this.searchServ.search(searchInput)
+
+    this.searched.emit(results)
   }
 }

@@ -7,14 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   navItems = ["Produtos", "Biscoitos", "Chocolates"]
-  searchTerm: string = ""
+  searchResults: {title: string, url: string}[] = []
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onSearch(searchTerm) {
-    this.searchTerm = searchTerm
+  onSearch(searchResults) {
+    this.searchResults = searchResults
   }
 }
